@@ -3,3 +3,4 @@ langchain
 langchain-core
 langchain_google_genai
 pydantic
+python-dotenv
