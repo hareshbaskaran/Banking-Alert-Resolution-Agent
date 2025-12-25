@@ -1,0 +1,48 @@
+from langchain_core.messages import HumanMessage
+
+from app.models.agent import AgentState
+from app.models.parser import FindingResult
+from utils.tools import get_transactions_by_customer
+from utils.llms import llm
+import json
+
+
+def investigator_node(state: AgentState):
+    task = state["next_agent_task"]
+    finding_name = task["finding_name"]
+
+    transactions = get_transactions_by_customer(state["subject_id"])
+
+    prompt = f"""
+You are an AML Investigator Agent.
+
+ROLE:
+Analyze TRANSACTION DATA only.
+
+OBJECTIVE:
+Compute finding: {finding_name}
+
+TRANSACTION DATA:
+{json.dumps(transactions, indent=2)}
+
+Return a structured result.
+"""
+
+    result = llm.with_structured_output(
+        FindingResult
+    ).invoke([HumanMessage(content=prompt)])
+
+    state["findings"][finding_name] = result.model_dump()
+
+    res = {
+        "findings": state["findings"],
+        "next_agent": None,
+        "next_agent_task": None
+    }
+    print("\n================ INVESTIGATOR RESULT ================ \n")
+    print(f"Investigator Agent Prompt: \n\n {prompt}")
+    print(f"----------------------------------------------------- \n")
+    print(f"Investigator Agent Routing : \n\n {json.dumps({'next_agent': res['next_agent'], 'next_agent_task': res['next_agent_task']}, indent=2)}")
+    print(f"Investigator Agent Result: \n\n {json.dumps(res, indent=2)}")
+
+    return res
