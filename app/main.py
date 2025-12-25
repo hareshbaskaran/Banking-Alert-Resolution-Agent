@@ -2,12 +2,12 @@ from app.graph import workflow
 
 def run():
     alerts = [
-        {
-            "alert_id": "ALT-001",
-            "scenario_code": "A-001",
-            "subject_id": "CUST-101",   # Trader without prior velocity spike
-            "subject_name": "Alice Trader"
-        },
+        # {
+        #     "alert_id": "ALT-001",
+        #     "scenario_code": "A-001",
+        #     "subject_id": "CUST-101",   # Trader without prior velocity spike
+        #     "subject_name": "Alice Trader"
+        # },
         {
             "alert_id": "ALT-002",
             "scenario_code": "A-002",
