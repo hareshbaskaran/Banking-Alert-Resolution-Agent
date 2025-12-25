@@ -1,4 +1,4 @@
-{"profiles" : [
+PROFILES = [
   {
     "customer_id": "CUST-101",
     "name": "Alice Traders Pvt Ltd",
@@ -9,8 +9,8 @@
     "dormant_months": 0,
     "declared_annual_income": 250000,
     "source_of_funds": "Wholesale trading receipts (B2B)",
-    "cash_business": true,
-    "sanctions_flag": false,
+    "cash_business": True,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-101-1", "country": "US", "account_status": "Active"},
@@ -29,8 +29,8 @@
     "dormant_months": 0,
     "declared_annual_income": 120000,
     "source_of_funds": "Retail cash sales",
-    "cash_business": true,
-    "sanctions_flag": false,
+    "cash_business": True,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-102-1", "country": "IN", "account_status": "Active"},
@@ -49,8 +49,8 @@
     "dormant_months": 0,
     "declared_annual_income": 45000,
     "source_of_funds": "Salary",
-    "cash_business": false,
-    "sanctions_flag": false,
+    "cash_business": False,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-103-1", "country": "US", "account_status": "Active"}
@@ -68,8 +68,8 @@
     "dormant_months": 0,
     "declared_annual_income": 600000,
     "source_of_funds": "Precious metals trading, wholesale",
-    "cash_business": true,
-    "sanctions_flag": false,
+    "cash_business": True,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-104-1", "country": "AE", "account_status": "Active"},
@@ -82,14 +82,14 @@
     "customer_id": "CUST-105",
     "name": "Sam Student",
     "occupation_category": "Student",
-    "employer": null,
+    "employer": None,
     "kyc_risk_level": "Low",
     "jurisdiction": "GB",
     "dormant_months": 0,
     "declared_annual_income": 6000,
     "source_of_funds": "Parental support / stipend",
-    "cash_business": false,
-    "sanctions_flag": false,
+    "cash_business": False,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-105-1", "country": "GB", "account_status": "Active"}
@@ -107,8 +107,8 @@
     "dormant_months": 0,
     "declared_annual_income": 180000,
     "source_of_funds": "Cash sales at multiple outlets",
-    "cash_business": true,
-    "sanctions_flag": false,
+    "cash_business": True,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-106-1", "country": "AE", "account_status": "Active"},
@@ -121,14 +121,14 @@
     "customer_id": "CUST-107",
     "name": "Vikram Freelance",
     "occupation_category": "Freelancer",
-    "employer": null,
+    "employer": None,
     "kyc_risk_level": "Medium",
     "jurisdiction": "IN",
     "dormant_months": 0,
     "declared_annual_income": 40000,
     "source_of_funds": "Freelance services (invoices)",
-    "cash_business": false,
-    "sanctions_flag": false,
+    "cash_business": False,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-107-1", "country": "IN", "account_status": "Active"}
@@ -140,14 +140,14 @@
     "customer_id": "CUST-108",
     "name": "Unknown Entity",
     "occupation_category": "Other",
-    "employer": null,
+    "employer": None,
     "kyc_risk_level": "Critical",
     "jurisdiction": "KP",
     "dormant_months": 0,
     "declared_annual_income": 0,
     "source_of_funds": "Unknown",
-    "cash_business": false,
-    "sanctions_flag": true,
+    "cash_business": False,
+    "sanctions_flag": True,
     "sanctions_ids": ["SANC-4201"],
     "linked_accounts": [
       {"account_id": "ACC-108-1", "country": "KP", "account_status": "Active"}
@@ -159,14 +159,14 @@
     "customer_id": "CUST-109",
     "name": "Elder Retiree",
     "occupation_category": "Retired",
-    "employer": null,
+    "employer": None,
     "kyc_risk_level": "High",
     "jurisdiction": "US",
     "dormant_months": 14,
     "declared_annual_income": 20000,
     "source_of_funds": "Pension / savings",
-    "cash_business": false,
-    "sanctions_flag": false,
+    "cash_business": False,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-109-1", "country": "US", "account_status": "Dormant"}
@@ -184,8 +184,8 @@
     "dormant_months": 0,
     "declared_annual_income": 90000,
     "source_of_funds": "Salary / stock options",
-    "cash_business": false,
-    "sanctions_flag": false,
+    "cash_business": False,
+    "sanctions_flag": False,
     "sanctions_ids": [],
     "linked_accounts": [
       {"account_id": "ACC-110-1", "country": "IN", "account_status": "Active"},
@@ -195,4 +195,4 @@
     "kyc_notes": "Engineer with international payroll; low AML risk historically."
   }
 ]
-}
+
