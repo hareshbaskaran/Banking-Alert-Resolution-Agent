@@ -18,7 +18,8 @@ Agentic Alert Resolution System (AARS) to automatically investigate and resolve 
 - Add the Gemini API key into a .env file under GOOGLE_API_KEY namespace
 - note : PAID API KEY IS MUST AS FREE API KEY CANNOT HANDLE MULTIPLE RPM
 
-## AGENT ARCHITECTURE : docs/ARCHITECTURE.md
+## AGENT ARCHITECTURE 
+- docs/ARCHITECTURE.md - Hubs and Spokes architecture
 
 
 
