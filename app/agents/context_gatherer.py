@@ -1,10 +1,9 @@
-
 from app.utils.tools import get_profile_by_customer
 from app.models.agent import AgentState
 from app.models.parser import FindingResult
-from langchain_core.messages import HumanMessage
+from app.utils.llms import llm
 
-from utils.llms import llm
+from langchain_core.messages import HumanMessage
 import json
 
 def context_gatherer_node(state: AgentState):

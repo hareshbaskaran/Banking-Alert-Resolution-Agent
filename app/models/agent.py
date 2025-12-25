@@ -1,7 +1,5 @@
-import json
-from typing import Dict, Any, Optional, Literal
+from typing import Dict, Any, Optional
 from typing_extensions import TypedDict
-from pydantic import BaseModel, Field
 
 class AgentState(TypedDict):
     alert_id: str

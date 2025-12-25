@@ -16,4 +16,15 @@ class FindingResult(BaseModel):
     explanation: str
     source: Literal["transactional_data", "profile_data"]
 
+class AdjudicationResult(BaseModel):
+    decision: Literal[
+        "ESCALATE_SAR",
+        "CLOSE_FALSE_POSITIVE",
+        "REQUEST_INFO",
+        "BLOCK_AND_SAR"
+    ]
+    risk_level: Literal["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    rationale: str
+
+
 
