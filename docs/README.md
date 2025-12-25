@@ -11,8 +11,15 @@ Agentic Alert Resolution System (AARS) to automatically investigate and resolve 
 ## Setup Configuration
 - Create Python Virtual Environment (Python 3.8 +)
 - Run """pip install -r requirements.txt""" command in terminal
-- execute main.py file to execute agentic workflow graph with CLI
-- execute tests/scenarios.py to execute workflow for all 5 scenarios
+- execute main.py file to execute all scenarios listed or create alert structure in CLI
+
+## Required Project Setup
+- Gemini API Key is a required credential 
+- Add the Gemini API key into a .env file under GOOGLE_API_KEY namespace
+- note : PAID API KEY IS MUST AS FREE API KEY CANNOT HANDLE MULTIPLE RPM
+
+## AGENT ARCHITECTURE : docs/ARCHITECTURE.md
+
 
 
 
