@@ -13,7 +13,6 @@ def get_llm():
 llm = get_llm()
 
 
-
 ## Test Usage :
 if __name__ == "__main__":
     response = llm.invoke("Hello, how are you?")
