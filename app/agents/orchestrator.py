@@ -15,9 +15,14 @@ def orchestrator_node(state: AgentState):
         current_findings=json.dumps(state["findings"], indent=2)
     )
 
-    decision = llm.with_structured_output(
+    try:
+        decision = llm.with_structured_output(
         OrchestratorDecision
     ).invoke([HumanMessage(content=prompt)])
+    except Exception as e:
+        raise RuntimeError(
+            f"LLM failed to Structure or result invalid. Error: {e}"
+        )
 
     res = {
         "next_agent": decision.next_agent,

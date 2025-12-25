@@ -29,11 +29,16 @@ TRANSACTION DATA:
 Return a structured result.
 """
 
-    result = llm.with_structured_output(
+    try:
+        result = llm.with_structured_output(
         FindingResult
     ).invoke([HumanMessage(content=prompt)])
-
-    state["findings"][finding_name] = result.model_dump()
+        state["findings"][finding_name] = result.model_dump()
+    except Exception as e:
+        raise RuntimeError(
+            f"Failed to load finding '{finding_name}'. "
+            f"LLM failed to Structure or result invalid. Error: {e}"
+        )
 
     res = {
         "findings": state["findings"],

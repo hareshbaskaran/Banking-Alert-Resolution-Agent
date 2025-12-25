@@ -27,9 +27,15 @@ Findings:
 {json.dumps(flat_findings, indent=2)}
 """
 
-    result = llm.with_structured_output(
+    try :
+        result = llm.with_structured_output(
         AdjudicationResult
     ).invoke([HumanMessage(content=prompt)])
+        
+    except Exception as e:
+        raise RuntimeError(
+            f"LLM failed to Structure or result invalid. Error: {e}"
+        )
 
     print("\n================ FINAL DECISION ================")
     print(f"ALERT ID : {state['alert_id']}")
