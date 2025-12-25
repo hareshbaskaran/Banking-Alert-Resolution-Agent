@@ -14,7 +14,7 @@ FINDINGS REQUIRED:
      Check if another velocity spike occurred BEFORE the alerted spike
      within the SAME 90-day lookback window.
    - Metriculation:
-     Boolean → TRUE if ≥1 earlier 48-hour window had ≥5 txns > $5k.
+     Boolean → TRUE if earlier 48-hour window had ≥5 txns > $5k.
    - Datatype:
      Boolean
    - Source:
@@ -25,7 +25,7 @@ FINDINGS REQUIRED:
      Customer occupation and source of funds logically explain
      high outbound velocity reported in the alert.
    - Metriculation:
-     Boolean → TRUE if occupation ∈ {Trader, Business Owner, Jeweler}
+     Boolean → TRUE if occupation ∈ {Trader, Business Owner, Jeweler} 
    - Datatype:
      Boolean
    - Source:

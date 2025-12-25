@@ -7,6 +7,21 @@ from langchain_core.messages import HumanMessage
 import json
 
 def context_gatherer_node(state: AgentState):
+    """
+    Context Gatherer Node.
+    Analyzes customer profile/KYC data to compute specific findings.
+
+    Args:
+        state (AgentState): Current state of the agent including next agent task.
+    Returns:    
+        dict: Updated findings along with next agent and task set to None.
+    
+    attributes:
+        findings (dict): Updated findings with the new computed finding.
+        next_agent (None): Set to None after task completion.
+        next_agent_task (None): Set to None after task completion.
+    """
+
     task = state["next_agent_task"]
     finding_name = task["finding_name"]
 
@@ -39,16 +54,8 @@ Return a structured result.
             f"LLM failed to Structure or result invalid. Error: {e}"
         )
 
-    res = {
+    return {
         "findings": state["findings"],
         "next_agent": None,
         "next_agent_task": None
     }
-
-    print("\n================ CONTEXT GATHERER RESULT ================ \n")
-    print(f"Context Gatherer Agent Prompt: \n\n {prompt}")
-    print(f"----------------------------------------------------- \n")
-    print(f"Context Gatherer Agent Routing : \n\n {json.dumps({'next_agent': res['next_agent'], 'next_agent_task': res['next_agent_task']}, indent=2)}")
-    print(f"Context Gatherer Agent Result: \n\n {json.dumps(res, indent=2)}")
-
-    return res

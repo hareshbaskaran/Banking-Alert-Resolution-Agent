@@ -1,6 +1,7 @@
 from app.db.sops import SOPS
 from app.models.parser import AdjudicationResult
 from app.models.agent import AgentState
+from app.utils.helpers import extract_finding_values
 from app.utils.llms import llm
 
 from langchain_core.messages import HumanMessage
@@ -8,42 +9,39 @@ import json
 
 
 def adjudicator_node(state: AgentState):
+    """
+    Adjudicator Node.
+    Applies the Standard Operating Procedure (SOP) based on the scenario code
+    and the collected findings to make a final adjudication.
+    Args:
+        state (AgentState): Current state of the agent including findings.
+    Returns:
+        AgentState: Updated state with adjudication result.
+    """
+
+    ## 1. Get SOP based on scenario code and Map findings to simple key-value pairs
     sop = SOPS[state["scenario_code"]]
+    findings = extract_finding_values(state["findings"])
 
-    flat_findings = {
-        k: v["value"] if isinstance(v, dict) else v
-        for k, v in state["findings"].items()
-    }
-
-    prompt = f"""
+    ## 2. Invoke LLM to get Adjudication Result
+    result = llm.with_structured_output(
+        AdjudicationResult
+    ).invoke([HumanMessage(content=f"""
 You are the Adjudicator.
 
-Apply SOP strictly. Do not infer beyond rules.
+Apply SOP strictly. Do NOT infer beyond rules.
 
 SOP:
 {sop}
 
 Findings:
-{json.dumps(flat_findings, indent=2)}
-"""
+{json.dumps(findings, indent=2)}
+""")])
 
-    try :
-        result = llm.with_structured_output(
-        AdjudicationResult
-    ).invoke([HumanMessage(content=prompt)])
-        
-    except Exception as e:
-        raise RuntimeError(
-            f"LLM failed to Structure or result invalid. Error: {e}"
-        )
-
-    print("\n================ FINAL DECISION ================")
-    print(f"ALERT ID : {state['alert_id']}")
-    print("DECISION :", result.decision)
-    print("RISK     :", result.risk_level)
-    print("RATIONALE:", result.rationale)
-    print("================================================\n")
-
+    ## 3. Update State with Adjudication Result
+    
+    state["adjudication"] = result.model_dump()
     state["next_agent"] = None
     state["next_agent_task"] = None
+
     return state

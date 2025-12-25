@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_llm():
+    """Initialize and return the Google Gemini LLM instance."""
     return ChatGoogleGenerativeAI(
         model="gemini-2.5-flash-lite",
         temperature=0,

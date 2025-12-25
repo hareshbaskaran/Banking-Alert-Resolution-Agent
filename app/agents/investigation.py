@@ -9,11 +9,28 @@ from app.utils.llms import llm
 
 
 def investigator_node(state: AgentState):
+    """
+    AML Investigator Node.
+    Analyzes transaction data to compute specific findings.
+    Args:
+        state (AgentState): Current state of the agent including next agent task.
+    Returns:    
+        dict: Updated findings along with next agent and task set to None.
+    
+    attributes:
+        findings (dict): Updated findings with the new computed finding.
+        next_agent (None): Set to None after task completion.
+        next_agent_task (None): Set to None after task completion.
+    """
+
+    ## 1. Get Task Details
     task = state["next_agent_task"]
     finding_name = task["finding_name"]
 
+    ## 2. Get Transaction Details for all the accounts the customer hold, Sorted by Timestamps
     transactions = get_transactions_by_customer(state["subject_id"])
 
+    ## 3. Invoke LLM to compute the findings and update state
     prompt = f"""
 You are an AML Investigator Agent.
 
@@ -40,15 +57,10 @@ Return a structured result.
             f"LLM failed to Structure or result invalid. Error: {e}"
         )
 
-    res = {
+    ## 4. Return Updated State with Findings
+    return {
         "findings": state["findings"],
         "next_agent": None,
         "next_agent_task": None
     }
-    print("\n================ INVESTIGATOR RESULT ================ \n")
-    print(f"Investigator Agent Prompt: \n\n {prompt}")
-    print(f"----------------------------------------------------- \n")
-    print(f"Investigator Agent Routing : \n\n {json.dumps({'next_agent': res['next_agent'], 'next_agent_task': res['next_agent_task']}, indent=2)}")
-    print(f"Investigator Agent Result: \n\n {json.dumps(res, indent=2)}")
 
-    return res
