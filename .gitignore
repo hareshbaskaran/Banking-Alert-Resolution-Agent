@@ -2,3 +2,8 @@ app/test.py
 .venv
 .vscode
 .env
+app/utils/__pycache__
+app/models/__pycache__
+app/agents/__pycache__
+app/db/__pycache__
+app/__pycache__
