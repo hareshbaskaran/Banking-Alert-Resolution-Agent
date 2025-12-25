@@ -11,7 +11,7 @@ Agentic Alert Resolution System (AARS) to automatically investigate and resolve 
 ## Setup Configuration
 - Create Python Virtual Environment (Python 3.8 +)
 - Run """pip install -r requirements.txt""" command in terminal
-- execute main.py file to execute all scenarios listed or create alert structure in CLI
+- execute main.py file to execute all scenarios listed or create alert structure in CLI - """python -m app.main"""
 
 ## Required Project Setup
 - Gemini API Key is a required credential 

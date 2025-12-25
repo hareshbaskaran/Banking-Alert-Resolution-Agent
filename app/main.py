@@ -1,141 +1,65 @@
+from app.tests import run_all_tests
 from app.graph import workflow
+from app.models.input import AlertInput
 
 
-def run():
-    alerts = [
+def run_single_from_cli():
+    """
+    CLI-driven single alert execution.
 
-        # ======================================================
-        # TEST CASE 1 — A-001 : Velocity Spike (Layering)
-        # ======================================================
-        # WHY THIS CASE:
-        # - Customer is a Trader with legitimate wholesale activity
-        # - High transaction velocity is EXPECTED for this profile
-        #
-        # EXPECTED BEHAVIOR:
-        # - Investigator finds no prior velocity spike
-        # - ContextGatherer confirms business justification
-        # - SOP resolves as FALSE POSITIVE
-        #
-        # EXPECTED ACTION:
-        # - Alert Closure
-        #
-        {
-            "alert_id": "ALT-001-A",
-            "scenario_code": "A-001",
-            "subject_id": "CUST-101",
-            "expected_action": "ALERT_CLOSURE"
-        },
+    This simulates a real analyst intake screen:
+    - Explicit prompts
+    - No silent input modification
+    - Strict Pydantic validation
+    """
 
-        # ======================================================
-        # TEST CASE 2 — A-002 : Below-Threshold Structuring
-        # ======================================================
-        # WHY THIS CASE:
-        # - Cash business deposits just below reporting thresholds
-        # - Deposits span multiple geographies
-        #
-        # EXPECTED BEHAVIOR:
-        # - Investigator computes aggregate cash > threshold
-        # - Geographic diversity is detected
-        # - SOP triggers escalation for SAR
-        #
-        # EXPECTED ACTION:
-        # - SAR Preparation
-        #
-        {
-            "alert_id": "ALT-002-A",
-            "scenario_code": "A-002",
-            "subject_id": "CUST-102",
-            "expected_action": "SAR_PREPARATION"
-        },
+    print("\nEnter Alert Details")
+    print("-------------------")
 
-        # ======================================================
-        # TEST CASE 3 — A-003 : KYC Inconsistency
-        # ======================================================
-        # WHY THIS CASE:
-        # - Teacher sends large wire to Precious Metals merchant
-        # - Clear mismatch between occupation and transaction type
-        #
-        # EXPECTED BEHAVIOR:
-        # - ContextGatherer identifies occupation = Teacher
-        # - SOP mandates escalation
-        #
-        # EXPECTED ACTION:
-        # - SAR Preparation
-        #
-        {
-            "alert_id": "ALT-003-A",
-            "scenario_code": "A-003",
-            "subject_id": "CUST-103",
-            "expected_action": "SAR_PREPARATION"
-        },
+    alert_id = input("Enter Alert ID (e.g., ALT-001-A): ")
+    scenario_code = input("Enter Scenario Code (e.g., A-001): ")
+    subject_id = input("Enter Subject ID (e.g., CUST-101): ")
 
-        # ======================================================
-        # TEST CASE 4 — A-004 : Sanctions / High-Risk Jurisdiction
-        # ======================================================
-        # WHY THIS CASE:
-        # - High-risk industry (Jeweler)
-        # - BUT no sanctions flag and no sanctioned counterparty
-        #
-        # EXPECTED BEHAVIOR:
-        # - ContextGatherer confirms no sanctions exposure
-        # - Investigator finds no high-risk jurisdiction hit
-        # - SOP resolves as FALSE POSITIVE
-        #
-        # EXPECTED ACTION:
-        # - Alert Closure
-        #
-        {
-            "alert_id": "ALT-004-B",
-            "scenario_code": "A-004",
-            "subject_id": "CUST-104",
-            "expected_action": "ALERT_CLOSURE"
-        },
+    # Pydantic validation happens here
+    alert = AlertInput(
+        alert_id=alert_id,
+        scenario_code=scenario_code,
+        subject_id=subject_id
+    )
 
-        # ======================================================
-        # TEST CASE 5 — A-005 : Dormant Account Activation
-        # ======================================================
-        # WHY THIS CASE:
-        # - Student account (low inherent risk)
-        # - No large inbound wire
-        # - No international ATM withdrawal
-        #
-        # EXPECTED BEHAVIOR:
-        # - ContextGatherer confirms Low KYC risk
-        # - Investigator finds no suspicious withdrawal
-        # - SOP requests clarification instead of escalation
-        #
-        # EXPECTED ACTION:
-        # - RFI (Request For Information)
-        #
-        {
-            "alert_id": "ALT-005-B",
-            "scenario_code": "A-005",
-            "subject_id": "CUST-105",
-            "expected_action": "RFI"
-        },
-    ]
+    print("\n--- VALIDATED INPUT -----------------------------")
+    print(f"Alert ID  : {alert.alert_id}")
+    print(f"Scenario  : {alert.scenario_code}")
+    print(f"Subject   : {alert.subject_id}")
+    print("------------------------------------------------\n")
 
-    for idx, alert in enumerate(alerts):
-        print(f"\n\n===================== TEST CASE {idx+1} =====================")
-        print(
-            f"NEW ALERT : {alert['alert_id']} || "
-            f"SCENARIO : {alert['scenario_code']} || "
-            f"SUBJECT : {alert['subject_id']}"
-        )
-        print("EXPECTED ACTION :", alert["expected_action"])
-        print("------------------------------------------------\n")
+    workflow.invoke({
+        "alert_id": alert.alert_id,
+        "scenario_code": alert.scenario_code,
+        "subject_id": alert.subject_id,
+        "findings": {},
+        "next_agent": None,
+        "next_agent_task": None,
+        "adjudication": None
+    })
 
-        workflow.invoke({
-            "alert_id": alert["alert_id"],
-            "scenario_code": alert["scenario_code"],
-            "subject_id": alert["subject_id"],
-            "findings": {},
-            "next_agent": None,
-            "next_agent_task": None,
-            "adjudication": None
-        })
+
+def main():
+    print("\nAgentic AML Alert Resolution System")
+    print("----------------------------------")
+    print("1. Run all predefined test cases")
+    print("2. Run a single alert (manual input)")
+    print("----------------------------------")
+
+    choice = input("Select option (1 or 2): ")
+
+    if choice == "1":
+        run_all_tests()
+    elif choice == "2":
+        run_single_from_cli()
+    else:
+        print("Invalid choice. Exiting.")
 
 
 if __name__ == "__main__":
-    run()
-    ## Test(V3) - End to End Execution and Agent Workflow Verification
+    main()
