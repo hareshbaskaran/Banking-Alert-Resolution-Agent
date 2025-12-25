@@ -1,132 +1,198 @@
-{
-  "CUST-001": {
-    "full_name": "Alice Trader",
-    "occupation": "Trader",
-    "employer": "Self",
-    "declared_income_annual": 500000,
-    "source_of_funds": "Trading Revenue",
-    "risk_rating": "Low",
+{"profiles" : [
+  {
+    "customer_id": "CUST-101",
+    "name": "Alice Traders Pvt Ltd",
+    "occupation_category": "Trader",
+    "employer": "Alice Traders Pvt Ltd",
+    "kyc_risk_level": "Medium",
     "jurisdiction": "US",
+    "dormant_months": 0,
+    "declared_annual_income": 250000,
+    "source_of_funds": "Wholesale trading receipts (B2B)",
+    "cash_business": true,
     "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 96
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-101-1", "country": "US", "account_status": "Active"},
+      {"account_id": "ACC-101-2", "country": "US", "account_status": "Active"}
+    ],
+    "preferred_currency": "USD",
+    "kyc_notes": "Registered wholesaler of electronic components; invoices present."
   },
-  "CUST-002": {
-    "full_name": "Bob Retail",
-    "occupation": "Retail Owner",
-    "employer": "Bob Mart",
-    "declared_income_annual": 70000,
-    "source_of_funds": "Retail Sales",
-    "risk_rating": "Medium",
+  {
+    "customer_id": "CUST-102",
+    "name": "Raj Retail",
+    "occupation_category": "Business Owner",
+    "employer": "Raj Retail",
+    "kyc_risk_level": "Low",
+    "jurisdiction": "IN",
+    "dormant_months": 0,
+    "declared_annual_income": 120000,
+    "source_of_funds": "Retail cash sales",
+    "cash_business": true,
+    "sanctions_flag": false,
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-102-1", "country": "IN", "account_status": "Active"},
+      {"account_id": "ACC-102-2", "country": "IN", "account_status": "Active"}
+    ],
+    "preferred_currency": "INR",
+    "kyc_notes": "Multiple small shops; POS terminals; VAT returns available."
+  },
+  {
+    "customer_id": "CUST-103",
+    "name": "Charlie Teach",
+    "occupation_category": "Teacher",
+    "employer": "City School",
+    "kyc_risk_level": "Low",
     "jurisdiction": "US",
-    "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 48
-  },
-  "CUST-003": {
-    "full_name": "Charlie Teacher",
-    "occupation": "Teacher",
-    "employer": "Public School",
-    "declared_income_annual": 45000,
+    "dormant_months": 0,
+    "declared_annual_income": 45000,
     "source_of_funds": "Salary",
-    "risk_rating": "Low",
-    "jurisdiction": "US",
+    "cash_business": false,
     "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 60
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-103-1", "country": "US", "account_status": "Active"}
+    ],
+    "preferred_currency": "USD",
+    "kyc_notes": "Standard salary account; no business activity declared."
   },
-  "CUST-004": {
-    "full_name": "David Jeweler",
-    "occupation": "Jeweler",
-    "employer": "Gold House",
-    "declared_income_annual": 300000,
-    "source_of_funds": "Jewelry Business",
-    "risk_rating": "Low",
-    "jurisdiction": "US",
+  {
+    "customer_id": "CUST-104",
+    "name": "Gems & Co",
+    "occupation_category": "Jeweler",
+    "employer": "Gems & Co",
+    "kyc_risk_level": "High",
+    "jurisdiction": "AE",
+    "dormant_months": 0,
+    "declared_annual_income": 600000,
+    "source_of_funds": "Precious metals trading, wholesale",
+    "cash_business": true,
     "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 72
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-104-1", "country": "AE", "account_status": "Active"},
+      {"account_id": "ACC-104-2", "country": "US", "account_status": "Active"}
+    ],
+    "preferred_currency": "USD",
+    "kyc_notes": "High-volume jewel exports; trade license and invoices present; higher inherent risk due to industry."
   },
-  "CUST-005": {
-    "full_name": "Ivan Petrov",
-    "occupation": "Unknown",
-    "employer": "Unknown",
-    "declared_income_annual": 0,
+  {
+    "customer_id": "CUST-105",
+    "name": "Sam Student",
+    "occupation_category": "Student",
+    "employer": null,
+    "kyc_risk_level": "Low",
+    "jurisdiction": "GB",
+    "dormant_months": 0,
+    "declared_annual_income": 6000,
+    "source_of_funds": "Parental support / stipend",
+    "cash_business": false,
+    "sanctions_flag": false,
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-105-1", "country": "GB", "account_status": "Active"}
+    ],
+    "preferred_currency": "GBP",
+    "kyc_notes": "Student account; limited transaction history; ID verified."
+  },
+  {
+    "customer_id": "CUST-106",
+    "name": "Spice House",
+    "occupation_category": "Restaurant Owner",
+    "employer": "Spice House LLC",
+    "kyc_risk_level": "Medium",
+    "jurisdiction": "AE",
+    "dormant_months": 0,
+    "declared_annual_income": 180000,
+    "source_of_funds": "Cash sales at multiple outlets",
+    "cash_business": true,
+    "sanctions_flag": false,
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-106-1", "country": "AE", "account_status": "Active"},
+      {"account_id": "ACC-106-2", "country": "OM", "account_status": "Active"}
+    ],
+    "preferred_currency": "AED",
+    "kyc_notes": "Multi-branch QSR; high cash turnover; POS receipts available."
+  },
+  {
+    "customer_id": "CUST-107",
+    "name": "Vikram Freelance",
+    "occupation_category": "Freelancer",
+    "employer": null,
+    "kyc_risk_level": "Medium",
+    "jurisdiction": "IN",
+    "dormant_months": 0,
+    "declared_annual_income": 40000,
+    "source_of_funds": "Freelance services (invoices)",
+    "cash_business": false,
+    "sanctions_flag": false,
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-107-1", "country": "IN", "account_status": "Active"}
+    ],
+    "preferred_currency": "INR",
+    "kyc_notes": "Freelancer receiving mixed domestic and international payments."
+  },
+  {
+    "customer_id": "CUST-108",
+    "name": "Unknown Entity",
+    "occupation_category": "Other",
+    "employer": null,
+    "kyc_risk_level": "Critical",
+    "jurisdiction": "KP",
+    "dormant_months": 0,
+    "declared_annual_income": 0,
     "source_of_funds": "Unknown",
-    "risk_rating": "High",
-    "jurisdiction": "Sanctioned",
+    "cash_business": false,
     "sanctions_flag": true,
-    "pep_flag": true,
-    "account_status": "Active",
-    "account_age_months": 18
+    "sanctions_ids": ["SANC-4201"],
+    "linked_accounts": [
+      {"account_id": "ACC-108-1", "country": "KP", "account_status": "Active"}
+    ],
+    "preferred_currency": "USD",
+    "kyc_notes": "High-risk jurisdiction; listed on sanctions watchlist."
   },
-  "CUST-006": {
-    "full_name": "Elder Retired",
-    "occupation": "Retired",
-    "employer": "N/A",
-    "declared_income_annual": 28000,
-    "source_of_funds": "Pension",
-    "risk_rating": "High",
+  {
+    "customer_id": "CUST-109",
+    "name": "Elder Retiree",
+    "occupation_category": "Retired",
+    "employer": null,
+    "kyc_risk_level": "High",
     "jurisdiction": "US",
+    "dormant_months": 14,
+    "declared_annual_income": 20000,
+    "source_of_funds": "Pension / savings",
+    "cash_business": false,
     "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Dormant",
-    "account_age_months": 140
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-109-1", "country": "US", "account_status": "Dormant"}
+    ],
+    "preferred_currency": "USD",
+    "kyc_notes": "Dormant > 12 months; known beneficiary; requires review upon sudden large activity."
   },
-  "CUST-007": {
-    "full_name": "Frank Student",
-    "occupation": "Student",
-    "employer": "University",
-    "declared_income_annual": 12000,
-    "source_of_funds": "Scholarship",
-    "risk_rating": "Low",
-    "jurisdiction": "US",
+  {
+    "customer_id": "CUST-110",
+    "name": "Ravi Tech",
+    "occupation_category": "Software Engineer",
+    "employer": "RaviTech Solutions",
+    "kyc_risk_level": "Low",
+    "jurisdiction": "IN",
+    "dormant_months": 0,
+    "declared_annual_income": 90000,
+    "source_of_funds": "Salary / stock options",
+    "cash_business": false,
     "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 24
-  },
-  "CUST-008": {
-    "full_name": "Grace Consultant",
-    "occupation": "Consultant",
-    "employer": "Self",
-    "declared_income_annual": 150000,
-    "source_of_funds": "Consulting Fees",
-    "risk_rating": "Medium",
-    "jurisdiction": "US",
-    "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 54
-  },
-  "CUST-009": {
-    "full_name": "Henry Exporter",
-    "occupation": "Exporter",
-    "employer": "Export Co",
-    "declared_income_annual": 400000,
-    "source_of_funds": "Export Business",
-    "risk_rating": "Medium",
-    "jurisdiction": "US",
-    "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 80
-  },
-  "CUST-010": {
-    "full_name": "Isabel Homemaker",
-    "occupation": "Homemaker",
-    "employer": "N/A",
-    "declared_income_annual": 20000,
-    "source_of_funds": "Family Support",
-    "risk_rating": "Low",
-    "jurisdiction": "US",
-    "sanctions_flag": false,
-    "pep_flag": false,
-    "account_status": "Active",
-    "account_age_months": 30
+    "sanctions_ids": [],
+    "linked_accounts": [
+      {"account_id": "ACC-110-1", "country": "IN", "account_status": "Active"},
+      {"account_id": "ACC-110-2", "country": "SG", "account_status": "Active"}
+    ],
+    "preferred_currency": "INR",
+    "kyc_notes": "Engineer with international payroll; low AML risk historically."
   }
+]
 }
